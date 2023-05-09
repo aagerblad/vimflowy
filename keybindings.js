@@ -470,10 +470,10 @@ const actionMap =
 	  {
 		ColorFocusedItem("purple");
 	  },
-	  'alt-§': t => 
-	  {
-		ColorFocusedItem("purple");
-	  },
+	  //'alt-§': t => 
+	  //{
+	  //	ColorFocusedItem("purple");
+	  //},
 	  'alt-7': t => 
 	  {
 		ColorFocusedItem("gray");
