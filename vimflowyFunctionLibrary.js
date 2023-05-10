@@ -2858,6 +2858,9 @@ function updateKeyBuffer_Keyup(event)
         {
             // console.log(searchQuery);
 
+            // temp fix. undo the the ENTER that bleeds through
+            WF.undo();
+
             if(searchQuery !== null)
             {
                 WF.editItemName(WF.currentItem());
