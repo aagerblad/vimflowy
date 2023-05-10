@@ -53,19 +53,27 @@ const transparentActionMap =
 	    const focusedItem = WF.focusedItem();
 	    if(e.shiftKey && focusedItem)
 	    {
+			// we want to edit a note under the bullet
 			goToInsertMode();
 	      	return;
 	    }
 
+
 	    PrevEnterItem = WF.currentItem();
 	    if(focusedItem)
 	    {
-	      // console.log("transparent Enter (NORMAL) valid focus");
-	      e.preventDefault()
-	      e.stopPropagation()
-	      // WF.zoomIn(focusedItem);
-	      WF.zoomTo(focusedItem);
-	      WF.editItemName(focusedItem);
+			// console.log("transparent Enter (NORMAL) valid focus");
+
+			// Temp fix. Our event listeners are hooked up after WF so we can't stop the propagation atm.
+			// we'll undo their command as a workaround for now
+			WF.undo();
+
+			e.preventDefault()
+			e.stopPropagation()
+
+			// WF.zoomIn(focusedItem);
+			WF.zoomTo(focusedItem);
+			WF.editItemName(focusedItem);
 	    }
 	    else
 	    {
