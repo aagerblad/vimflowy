@@ -594,45 +594,6 @@ const transparentActionMap =
 	      goToNormalMode();
 	    }
 	  },
-	  'jk': e => 
-	  {
-		if (!OPTIONS.jkToEsc) {
-			return;
-		}
-	    // guard against accidently pressing jk while in the menu 
-		const focusedItem = WF.focusedItem();
-		if(!focusedItem)
-			return;
-
-		// needed when dealing with html tags
-		var extraLength = 0;
-		const nodes = getNodes(focusedItem.getElement());
-		for(let i = 0; i < nodes.length; ++i) 
-		{
-			if(!window.getSelection().containsNode(nodes[i]))
-				extraLength += nodes[i].length;
-			else
-				// only count length up to the focused node
-				break;
-		}
-
-	    goToNormalMode();
-
-		const cursorOffsetForJ = document.getSelection().getRangeAt(0).startOffset-1; 
-      	setCursorAt(cursorOffsetForJ);
-
-		// save offset before deleting
-	    const targetOffset = state.get().anchorOffset + extraLength;
-		
-	    // remove j from under the cursor
-	    WF.insertText("");
-
-		// move cursor to the correct offset
-  		moveCursorTo(e.target, offsetCalculator(state), targetOffset);
-
-	    // prevent k from being typed out.
-	    event.preventDefault();
-	  },
 	  'ctrl-k': e => 
 	  {
 		  HandleJumpTo();
