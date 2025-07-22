@@ -3,7 +3,7 @@
   "short_name": "Vimflowy",
   "description": "Vim shortcuts for Workflowy",
   "version": "0.0.5.2",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "icons": { "48": "icon48.png", "128": "icon128.png" },
   "content_scripts":
   [
@@ -25,15 +25,20 @@
     }
   ],
   "web_accessible_resources": [
-    "state.js",
-    "TimeTagCounter.js",
-    "easyMotion.js",
-    "cursorMovement.js",
-    "vimflowyFunctionLibrary.js",
-    "keybindings.js",
-    "transparentKeybindings.js",
-    "vimflowy.js",
-    "options.js"
+    {
+      "resources": [
+        "state.js",
+        "TimeTagCounter.js",
+        "easyMotion.js",
+        "cursorMovement.js",
+        "vimflowyFunctionLibrary.js",
+        "keybindings.js",
+        "transparentKeybindings.js",
+        "vimflowy.js",
+        "options.js"
+      ],
+      "matches": ["https://workflowy.com/*", "https://*.workflowy.com/*"]
+    }
   ],
   "permissions": [
     "https://workflowy.com/*",
