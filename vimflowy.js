@@ -144,4 +144,21 @@ const validSearchKeys = '1234567890[{]};:\'",<.>/?\\+=_-)(*&^%$#@~`!abcdefghijkl
 const validInputKeys =  '1234567890[{]};:\'",<.>/?\\+=_-)(*&^%$#@~`!abcdefghijklmnopqrstuvwxyzåäöABCDEFGHIJKLMNOPQRSTUVWXYZÅÄÖ';
 const key_Slash = "/"//55;
 const key_Esc = "Escape"//27;
-const modifierKeyCodesToIgnore = ['Shift', 'Control', 'Alt', 'Meta'];  
+const modifierKeyCodesToIgnore = ['Shift', 'Control', 'Alt', 'Meta'];
+
+// Initialize the extension when Workflowy is ready
+function initializeWhenReady() {
+  const app = document.getElementById('app');
+  if (app) {
+    WFEventListener("documentReady");
+  } else {
+    // Wait for app element to be created
+    setTimeout(initializeWhenReady, 100);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initializeWhenReady);
+} else {
+  initializeWhenReady();
+}  
